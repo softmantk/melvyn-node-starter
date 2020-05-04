@@ -1,8 +1,11 @@
 {
   "author": "Melvyn Kim <melvynkim@gmail.com>",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "bcrypt": "3.0.6",
     "bull": "3.11.0",
+    "cache-manager": "^3.3.0",
+    "cache-manager-ioredis": "^2.0.0",
     "chalk": "2.4.2",
     "compression": "1.7.4",
     "connect-redis": "3.4.1",
@@ -18,6 +21,7 @@
     "jsdom": "15.2.0",
     "jsonwebtoken": "8.5.1",
     "lodash": "4.17.15",
+    "mailgun-js": "^0.22.0",
     "mongoose": "5.7.5",
     "morgan": "1.9.1",
     "multer": "1.4.2",
@@ -75,11 +79,12 @@
   "scripts": {
     "_codecov": "codecov",
     "_heroku": "heroku",
-    "build": "yarn build:source && yarn build:swagger",
+    "build": "generate_build && yarn build:source && yarn build:swagger",
     "build:source": "babel src -d dist --ignore **/__tests__/**,**/__mocks__/**",
     "build:swagger": "node_modules/.bin/swagger-jsdoc -d swagger.json ./src/**/*.js -o swagger.yml",
     "build:zip": "zip -r9 $(node_modules/.bin/jq '.name' package.json | sed 's/\"//g')-$(git rev-parse --short HEAD) dist/ processes.js package.json Dockerfile swagger.yml",
     "e2e": "cross-env JEST_ENV=e2e jest \"src/.*\\.js$\" --forceExit",
+    "generate_build": "tools/generate_build_spec.sh",
     "lint": "esw src/**/*.js --color",
     "lint:fix": "esw src/**/*.js --fix",
     "lint:watch": "yarn lint -- --watch",

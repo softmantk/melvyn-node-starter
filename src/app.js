@@ -55,11 +55,11 @@ if (NODE_ENV === 'production') app.use(Raven.errorHandler());
 /**
  * @name Serve docs
  */
-if (SERVE_DOCS) {
-  const swaggerDocument = YAML.load('./swagger.yml');
-
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-}
+// if (SERVE_DOCS) {
+//   const swaggerDocument = YAML.load('./swagger.yml');
+//
+//   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// }
 
 /**
  * @name static-files
@@ -68,7 +68,7 @@ if (STATIC_FILES) {
   const root = join(__dirname, `../${STATIC_FILES}`);
 
   // seo friendly
-  app.use(rendertron.makeMiddleware({ proxyUrl: RENDERTRON_URL }));
+  // app.use(rendertron.makeMiddleware({ proxyUrl: RENDERTRON_URL }));
 
   // serve static
   app.use(express.static(root));

@@ -11,5 +11,6 @@ export const REDIS_URL = process.env.REDIS_URL || 'redis://:8UhZYvM76U8P93BG76DO
 export const RATE_LIMIT = process.env.RATE_LIMIT || 0;
 
 export const SENTRY_DSN = process.env.SENTRY_DSN || 'https://70484e0dda784a1081081ca9c8237792:51b5a95ee1e545efba3aba9103c6193e@sentry.io/236866';
-export const STATIC_FILES = process.env.STATIC_FILES || null;
+export const STATIC_FILES = process.env.STATIC_FILES || "public";
 export const RENDERTRON_URL = process.env.RENDERTRON_URL || 'https://render-tron.appspot.com/render';
+export const MAIL_DOMAINS_ALLOWED = process.env.MAIL_DOMAINS_ALLOWED || '';
